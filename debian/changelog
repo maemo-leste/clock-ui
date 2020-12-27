@@ -1,3 +1,9 @@
+clock-ui (0.8.0) unstable; urgency=low
+
+  * Initial Maemo Leste import
+
+ -- Merlijn Wajer <merlijn@wizzup.org>  Sun, 27 Dec 2020 18:45:16 +0100
+
 clock-ui (0.7-0+0cssu9) unstable; urgency=low
 
   * Remove dependency on thumb kernel fix
