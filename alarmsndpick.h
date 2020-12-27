@@ -4,7 +4,7 @@
 #include <QListWidgetItem>
 #include <QAbstractButton>
 #include <QDialog>
-#include <gstreamer-0.10/gst/gst.h>
+#include <gstreamer-1.0/gst/gst.h>
 
 namespace Ui {
     class AlarmSndPick;

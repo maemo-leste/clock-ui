@@ -4,15 +4,17 @@
 #include "qnewalarmdialog.h"
 #include "world.h"
 #include "alsettings.h"
-#include "gconfitem.h"
+#include <gconfitem.h>
 
 #include <QDateTime>
 #include <QMaemo5Style>
+#include <QtMaemo5/QtMaemo5>
 #include <QSettings>
 #include <QTimer>
 #include <QTextDocument>
 #include <QDesktopWidget>
 #include <QVBoxLayout>
+#include <QMenuBar>
 
 #include <dlfcn.h>
 #include "utils.h"

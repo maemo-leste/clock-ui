@@ -52,9 +52,9 @@ QAlarmDialog::QAlarmDialog(QWidget *parent) :
     view->setColumnWidth(sepCol1, SEPARATOR_WIDTH);
     view->setColumnWidth(sepCol2, SEPARATOR_WIDTH);
     view->header()->setStretchLastSection(false);
-    view->header()->setResizeMode(timeColumn, QHeaderView::ResizeToContents);
-    view->header()->setResizeMode(titleColumn, QHeaderView::Stretch);
-    view->header()->setResizeMode(daysColumn, QHeaderView::ResizeToContents);
+    view->header()->setSectionResizeMode(timeColumn, QHeaderView::ResizeToContents);
+    view->header()->setSectionResizeMode(titleColumn, QHeaderView::Stretch);
+    view->header()->setSectionResizeMode(daysColumn, QHeaderView::ResizeToContents);
     view->setSelectionMode(QAbstractItemView::SingleSelection);
     view->setSelectionBehavior(QAbstractItemView::SelectRows);
     view->setIconSize(QSize(48, 48));

@@ -23,7 +23,7 @@ builddir:
 	mkdir -p builddir
 
 builddir/Makefile: builddir
-	cd builddir && qmake-qt4 CONFIG+=nostrip PREFIX=/usr ../Alarm.pro
+	cd builddir && qmake CONFIG+=nostrip PREFIX=/usr ../Alarm.pro -spec maemo
 
 build: build-stamp
 
@@ -67,7 +67,6 @@ binary-arch: build install
 	dh_installexamples
 	dh_installman
 	dh_link
-	dh_strip --dbg-package=clock-ui-dbg
 	dh_compress
 	dh_fixperms
 	dh_installdeb

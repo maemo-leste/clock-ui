@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui widgets
 
 TARGET = worldclock
 TEMPLATE = app
@@ -71,7 +71,7 @@ CONFIG += mobility
 MOBILITY = 
 
 CONFIG += link_pkgconfig
-PKGCONFIG += gstreamer-0.10 gq-gconf alarm libcityinfo0-0
+PKGCONFIG += gstreamer-1.0 gq-gconf alarm libcityinfo0-0
 
 symbian {
     TARGET.UID3 = 0xeda884b4
@@ -88,8 +88,9 @@ unix {
 }
 
 maemo5 {
-    QT += maemo5 dbus
+    QT += maemo5 x11extras dbus
     LIBS += -ldl -ltime
+    PKGCONFIG += libtime
     INSTALLS += service
     service.path = $$PREFIX/share/dbus-1/services
     service.files += com.nokia.worldclock.service
