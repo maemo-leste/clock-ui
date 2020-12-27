@@ -28,8 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
     worldclocksButton(new QAlarmPushButton(_("cloc_ti_world_clocks"))),
     backgroundImage("/etc/hildon/theme/backgrounds/clock.png")
 {
-    this->setAttribute(Qt::WA_Maemo5AutoOrientation, true);
-    this->setAttribute(Qt::WA_Maemo5StackedWindow);
+    this->setProperty("X-Maemo-Orientation", 2);
+    this->setProperty("X-Maemo-StackedWindow", 1);
     ui->setupUi(this);
 
     setWindowTitle(_("cloc_ap_name"));

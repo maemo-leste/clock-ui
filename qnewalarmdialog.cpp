@@ -29,7 +29,7 @@ QNewAlarmDialog::QNewAlarmDialog(QWidget *parent, bool edit, QString Aname,
     time_t nextDate;
     GConfItem *item = new GConfItem("/apps/clock/alarm-tone");
 
-    setAttribute(Qt::WA_Maemo5AutoOrientation, true);
+    setProperty("X-Maemo-Orientation", 2);
     ui->setupUi(this);
 
     // get the current default alarm tone

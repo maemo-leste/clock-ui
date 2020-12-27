@@ -66,8 +66,8 @@ World::World(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowFlags(Qt::Window);
-    this->setAttribute(Qt::WA_Maemo5AutoOrientation, true);
-    this->setAttribute(Qt::WA_Maemo5StackedWindow);
+    this->setProperty("X-Maemo-Orientation", 2);
+    this->setProperty("X-Maemo-StackedWindow", 1);
 
     this->setWindowTitle(_("cloc_ti_world_clocks"));
 

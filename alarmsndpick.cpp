@@ -12,7 +12,7 @@ AlarmSndPick::AlarmSndPick(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AlarmSndPick)
 {
-    this->setAttribute(Qt::WA_Maemo5AutoOrientation, true);
+    this->setProperty("X-Maemo-Orientation", 2);
     ui->setupUi(this);
 
     selected = "nothing";

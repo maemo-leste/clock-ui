@@ -58,8 +58,9 @@ CityDetail::CityDetail(QWidget *parent, QString city_country, QString city_code,
 {
     ui->setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
-    this->setAttribute(Qt::WA_Maemo5AutoOrientation, true);
-    this->setAttribute(Qt::WA_Maemo5StackedWindow);
+    setProperty("X-Maemo-Orientation", 2);
+    setProperty("X-Maemo-StackedWindow", 1);
+
     this->setWindowTitle(_("cloc_ti_world_clock_details"));
 
     HH24true = hh24;

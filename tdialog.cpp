@@ -15,7 +15,8 @@ TDialog::TDialog(QWidget *parent) :
     ui(new Ui::TDialog)
 {
     extern QString musicFile;
-    this->setAttribute(Qt::WA_Maemo5AutoOrientation, true);
+    this->setProperty("X-Maemo-Orientation", 2);
+
     ui->setupUi(this);
 
     selected = "nothing";

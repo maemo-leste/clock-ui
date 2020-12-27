@@ -41,7 +41,7 @@ QAlarmDialog::QAlarmDialog(QWidget *parent) :
     model(new QStandardItemModel(0, lastColumn, view))
 {
     setWindowTitle(_("cloc_ti_alarms"));
-    setAttribute(Qt::WA_Maemo5StackedWindow);
+    setProperty("X-Maemo-StackedWindow", 1);
     setWindowFlags(Qt::Window);
 
     /* model/view */

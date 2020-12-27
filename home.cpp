@@ -35,8 +35,7 @@ Home::Home(QWidget *parent, QString path) :
 
     CargarBrowser( path );
 
-    setAttribute(Qt::WA_Maemo5AutoOrientation, true);
-
+    setProperty("X-Maemo-Orientation", 2);
 }
 
 Home::~Home()

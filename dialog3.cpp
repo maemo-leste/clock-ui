@@ -12,7 +12,7 @@ Dialog3::Dialog3(QWidget *parent) :
     ui(new Ui::Dialog3)
 {
     ui->setupUi(this);
-    this->setAttribute(Qt::WA_Maemo5AutoOrientation, true);
+    this->setProperty("X-Maemo-Orientation", 2);
     this->setWindowTitle(_("cloc_ti_search_city_title"));
 
     ui->cancelSearch_pushButton->setIcon(QIcon::fromTheme("general_close"));
