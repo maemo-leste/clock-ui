@@ -91,6 +91,11 @@ MainWindow::MainWindow(QWidget *parent) :
     if (showSeconds)
         ui->action_disp_seconds->setChecked(true);
 
+
+#ifdef Q_WS_MAEMO_5
+    menuBar()->hide(); // hide menubar
+#endif
+
     connect(QApplication::desktop(), SIGNAL(resized(int)),
             this, SLOT(orientationChanged()));
 
