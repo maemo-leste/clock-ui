@@ -71,9 +71,6 @@ AlarmSndPick::AlarmSndPick(QWidget *parent) :
     this->orientationChanged();
 
     ui->listWidget->setCurrentRow(0);
-
-    loop = g_main_loop_new (NULL, FALSE);
-
 }
 
 AlarmSndPick::~AlarmSndPick()
@@ -89,11 +86,7 @@ void AlarmSndPick::reject()
 
 void AlarmSndPick::stopSound()
 {
-    if ( g_main_loop_is_running(loop) )
-    {
-        g_main_loop_quit(loop);
-        gst_element_set_state (player, GST_STATE_NULL);
-    }
+    player.stop();
 }
 
 void AlarmSndPick::orientationChanged()
@@ -116,24 +109,11 @@ void AlarmSndPick::orientationChanged()
 
 void AlarmSndPick::on_listWidget_itemActivated(QListWidgetItem* item)
 {
-    //selected = item->whatsThis();
-    //this->accept();
-    QString sended = "file://"+item->whatsThis();
-    QByteArray ba = sended.toUtf8();
-    const char *str1 = ba.data();
+    QString uriStr = "file://"+item->whatsThis();
 
     stopSound();
-
-    gst_init (NULL,NULL);
-    player = gst_element_factory_make ("playbin2", "Multimedia Player");
-    g_object_set (G_OBJECT (player), "uri", str1, NULL);
-    g_assert (player != NULL);
-    //gdouble v = 0.5;
-    //g_object_set(player, "volume", v);
-    gst_element_set_state (player, GST_STATE_PLAYING);
-    g_main_loop_run(loop);
-
-
+    player.setMedia(QUrl(uriStr));
+    player.play();
 }
 
 void AlarmSndPick::on_moreButton_landscape_clicked(QAbstractButton* button)

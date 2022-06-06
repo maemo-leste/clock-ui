@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
+QT       += core gui widgets multimedia
 
 TARGET = worldclock
 TEMPLATE = app
@@ -71,7 +71,7 @@ CONFIG += mobility
 MOBILITY = 
 
 CONFIG += link_pkgconfig
-PKGCONFIG += gstreamer-1.0 gq-gconf alarm libcityinfo0-0
+PKGCONFIG += gq-gconf alarm libcityinfo0-0
 
 symbian {
     TARGET.UID3 = 0xeda884b4

@@ -4,7 +4,7 @@
 #include <QListWidgetItem>
 #include <QAbstractButton>
 #include <QDialog>
-#include <gstreamer-1.0/gst/gst.h>
+#include <QMediaPlayer>
 
 namespace Ui {
     class TDialog;
@@ -24,8 +24,7 @@ public slots:
 
 private:
     Ui::TDialog *ui;
-    GstElement *player;
-    GMainLoop* loop;
+    QMediaPlayer player;
 
 private slots:
     void on_moreButton_portrait_clicked(QAbstractButton* button);
