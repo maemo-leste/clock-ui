@@ -71,7 +71,7 @@ CONFIG += mobility
 MOBILITY = 
 
 CONFIG += link_pkgconfig
-PKGCONFIG += gq-gconf alarm libcityinfo0-0
+PKGCONFIG += glib-2.0 gq-gconf alarm libcityinfo0-0
 
 symbian {
     TARGET.UID3 = 0xeda884b4
