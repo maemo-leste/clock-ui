@@ -120,6 +120,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::resizeEvent(QResizeEvent *re) {
+	orientationChanged();
+}
+
 void MainWindow::orientationChanged()
 {
     QRect geom = QApplication::desktop()->screenGeometry();
@@ -162,8 +167,9 @@ void MainWindow::orientationChanged()
         centralLayout->addLayout(buttonsLayout);
 
         QPalette pal(palette());
-        pal.setBrush(QPalette::Window,
-                     backgroundImage);
+        scaledImage = backgroundImage.scaled(this->size(), Qt::IgnoreAspectRatio);
+        pal.setBrush(QPalette::Window, scaledImage);
+
         setPalette(pal);
 
     }

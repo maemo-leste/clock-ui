@@ -49,6 +49,7 @@ private:
     QAlarmPushButton *alarmsButton;
     QAlarmPushButton *worldclocksButton;
     QPixmap backgroundImage;
+    QPixmap scaledImage;
 
     QTimer *timer;
 
@@ -69,6 +70,8 @@ private Q_SLOTS:
     void worldclocksButtonClicked();
 
     void orientationChanged();
+protected:
+    void resizeEvent(QResizeEvent *re);
 };
 
 #endif // MAINWINDOW_H
