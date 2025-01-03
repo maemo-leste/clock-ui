@@ -8,7 +8,7 @@ clock-ui (0.8.1) unstable; urgency=low
 
   * Port GStreamer to Qt5
 
- -- Merlijn Wajer <merlijn@wizzup.org>  Mon  6 Jun 22:25:30 CEST 2022
+ -- Merlijn Wajer <merlijn@wizzup.org>	 Mon,  6 Jun 22:25:30 CEST 2022
 
 clock-ui (0.8.0) unstable; urgency=low
 

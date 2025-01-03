@@ -1,79 +1,33 @@
 #!/usr/bin/make -f
-CXXFLAGS = -Wall -g
+%:
+	dh $@
+
+DEB_CXXFLAGS_MAINT_APPEND = -Wall -g
 
 ifeq (,$(findstring nolauncher,$(DEB_BUILD_OPTIONS)))
-	CXXFLAGS += -fPIC
-	LDFLAGS += -shared -rdynamic -Wl,--version-script=$(CURDIR)/worldclock.version
+	DEB_CXXFLAGS_MAINT_APPEND += -fPIC
+	DEB_LDFLAGS_MAINT_APPEND += -shared -rdynamic -Wl,--version-script=$(CURDIR)/worldclock.version
 endif
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-	CXXFLAGS += -O0
+	DEB_CXXFLAGS_MAINT_APPEND += -O0
 else
-	CXXFLAGS += -O2
+	DEB_CXXFLAGS_MAINT_APPEND += -O2
 endif
 
 ifneq (,$(findstring thumb,$(DEB_BUILD_OPTIONS)))
-  CXXFLAGS += -mthumb
+  DEB_CXXFLAGS_MAINT_APPEND += -mthumb
 endif
+
+export DEB_CXXFLAGS_MAINT_APPEND
+export DEB_LDFLAGS_MAINT_APPEND
 
 export CXXFLAGS
 export LDFLAGS
 
-builddir:
-	mkdir -p builddir
+override_dh_auto_configure:
+	dh_auto_configure -- Alarm.pro -spec maemo
 
-builddir/Makefile: builddir
-	cd builddir && qmake CONFIG+=nostrip PREFIX=/usr ../Alarm.pro -spec maemo
-
-build: build-stamp
-
-build-stamp: builddir/Makefile
-	dh_testdir
-	# Add here commands to compile the package.
-	cd builddir && $(MAKE)
-	touch $@
-
-clean:
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp
-	# Add here commands to clean up after the build process.
-	rm -rf builddir
-	dh_clean
-
-install: build
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-	dh_installdirs
-
-	# Add here commands to install the package into debian/clock-ui
-	cd builddir && $(MAKE) INSTALL_ROOT=$(CURDIR)/debian/clock-ui install
-	cd builddir && cp -a $(CURDIR)/builddir/worldclock $(CURDIR)/debian/clock-ui/usr/bin
-
-	#use maemo launcher
-	dh_maemolauncher
-
-# Build architecture-independent files here.
-binary-indep: build install
-# We have nothing to do by default.
-
-# Build architecture-dependent files here.
-binary-arch: build install
-	dh_testdir
-	dh_testroot
-	dh_installchangelogs
-	dh_installdocs
-	dh_installexamples
-	dh_installman
-	dh_link
-	dh_compress
-	dh_fixperms
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install configure
+override_dh_auto_install:
+	dh_auto_install
+	dh_maemolauncher /usr/bin/worldclock
