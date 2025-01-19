@@ -1,3 +1,9 @@
+clock-ui (0.8.3) unstable; urgency=medium
+
+  * fix maemo-laincher integration
+
+ -- Ivaylo Dimitrov <ivo.g.dimitrov.75@gmail.com>  Sun, 19 Jan 2025 16:55:54 +0200
+
 clock-ui (0.8.2) unstable; urgency=medium
 
   * Make background window scale
