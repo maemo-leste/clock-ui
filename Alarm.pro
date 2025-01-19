@@ -89,8 +89,9 @@ unix {
 
 maemo5 {
     QT += maemo5 x11extras dbus
+    QMAKE_LFLAGS += "-Wl,--version-script=worldclock.version"
     LIBS += -ldl -ltime
-    PKGCONFIG += libtime
+    PKGCONFIG += libtime maemo-launcher-app
     INSTALLS += service
     service.path = $$PREFIX/share/dbus-1/services
     service.files += com.nokia.worldclock.service

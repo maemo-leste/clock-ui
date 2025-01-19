@@ -2,29 +2,6 @@
 %:
 	dh $@
 
-DEB_CXXFLAGS_MAINT_APPEND = -Wall -g
-
-ifeq (,$(findstring nolauncher,$(DEB_BUILD_OPTIONS)))
-	DEB_CXXFLAGS_MAINT_APPEND += -fPIC
-	DEB_LDFLAGS_MAINT_APPEND += -shared -rdynamic -Wl,--version-script=$(CURDIR)/worldclock.version
-endif
-
-ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-	DEB_CXXFLAGS_MAINT_APPEND += -O0
-else
-	DEB_CXXFLAGS_MAINT_APPEND += -O2
-endif
-
-ifneq (,$(findstring thumb,$(DEB_BUILD_OPTIONS)))
-  DEB_CXXFLAGS_MAINT_APPEND += -mthumb
-endif
-
-export DEB_CXXFLAGS_MAINT_APPEND
-export DEB_LDFLAGS_MAINT_APPEND
-
-export CXXFLAGS
-export LDFLAGS
-
 override_dh_auto_configure:
 	dh_auto_configure -- Alarm.pro -spec maemo
 
